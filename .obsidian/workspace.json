@@ -8,15 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "5b570e3c40a5464e",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
-            "id": "bc18c146a42873a9",
+            "id": "277b8a36bf7a1f3c",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -28,31 +20,14 @@
             }
           },
           {
-            "id": "277b8a36bf7a1f3c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IGMP.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
             "id": "0f5701ca7101ba29",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "UPC/API/Mutlicast.md",
-                "mode": "source",
-                "source": false
-              }
+              "type": "graph",
+              "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -102,8 +77,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "8322974853be94ff",
@@ -119,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "IGMP.md",
+                "file": "UPC/API/PIM-SM.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "IGMP.md",
+                "file": "UPC/API/PIM-SM.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -159,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IGMP.md"
+                "file": "UPC/API/PIM-SM.md"
               }
             }
           },
@@ -194,29 +168,31 @@
   },
   "active": "277b8a36bf7a1f3c",
   "lastOpenFiles": [
-    "UPC/API/PIM-SM.md",
-    "IGMP.md",
+    "UPC/CESA/Práctica 4-20231015/Pract4_Circuitos supervision y proteccion baterias_2023.pdf",
+    "UPC/CESA/Práctica 4-20231015/ICL7665.pdf",
+    "UPC/CESA/Práctica 4-20231015/FDN304P.pdf",
+    "UPC/CESA/Práctica 4-20231015",
+    "UPC/CESA/Práctica 4-20231015.zip",
+    "UPC/CESA/Unconfirmed 164405.crdownload",
+    "UPC/API/Pract4_Circuitos supervision y proteccion baterias_2023.pdf",
+    "UPC/API/Unconfirmed 366894.crdownload",
+    "UPC/API/show_ip_route_vtysh.py",
+    "UPC/API/Unconfirmed 404363.crdownload",
     "UPC/API/Mutlicast.md",
+    "MULTICAST.md",
+    "UPC/API/PIM-SM.md",
+    "UPC/API/IGMP.md",
     "Política/Independentismo/Madrid/Resumen.md",
     "UPC/API",
-    "Política/Independentismo/Madrid",
-    "Política/Independentismo",
-    "Política",
     "UPC/Electri/Practicas/P1/P1_Cicuits_DC.md",
     "UPC/Electri/Practicas/P1/Pasted image 20230912231930.png",
     "UPC/Electri/Practicas/P1/Pasted image 20230912231858.png",
     "UPC/Electri/Practicas/P1/Pasted image 20230912231718.png",
     "UPC/Electri/Practicas/P1/Pasted image 20230912231449.png",
-    "UPC/Electri/Practicas/P1/P1_Circuits_DC.pdf",
     "UPC/Electri/Practicas/P1/Pasted image 20230912231056.png",
     "UPC/Electri/Practicas/P1/Pasted image 20230912230838.png",
     "UPC/Electri/Practicas/P1/Pasted image 20230912224844.png",
     "UPC/Electri/Practicas/P1/ElectriP1_E1.png",
-    "UPC/Electri/Practicas/P1/Electri_P1.pdsprj.ZEPHYRUS_SERGIO.sergi.workspace",
-    "UPC/Electri/Practicas/P1/Project Backups/Electri_P1 [20230913, 12-05-59].pdsprj",
-    "UPC/Electri/Practicas/P1/Project Backups/Electri_P1 [20230913, 12-05-47].pdsprj",
-    "UPC/Electri/Practicas/P1/Project Backups/Electri_P1 [Autosaved].pdsprj",
-    "UPC/Electri/Practicas/P2. Introducció osciloscopi.pdf",
     "UPC/CESA/Fuentes_energia.md",
     "UPC/CESA/Circuitos_Electrónicos_y_Sistemas_de_Alimentación.md",
     "UPC/CESA/Diagrama red electrica.png",

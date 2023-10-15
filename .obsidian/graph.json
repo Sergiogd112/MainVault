@@ -1,7 +1,7 @@
 {
   "collapse-filter": false,
-  "search": "path:UPC/CESA",
-  "showTags": true,
+  "search": "path:UPC/API",
+  "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
