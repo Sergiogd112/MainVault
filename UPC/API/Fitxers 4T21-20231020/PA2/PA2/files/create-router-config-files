@@ -1,0 +1,163 @@
+#!/bin/bash
+usage () {
+    printf "create-router-config-files -o OUTPUT_DIR FILE\n"
+}
+
+while getopts ":o:d:h" opt; do
+  case $opt in
+    o) output_dir="$OPTARG";;
+    h | [?]) usage ; exit;;
+  esac
+done
+shift "$(($OPTIND -1))"
+if [ -z "$output_dir" ] ; then usage ; exit 1 ; fi
+
+file=$1
+if [ -z "$file" ] ; then usage ; exit 1 ; fi
+
+write_lxc_config(){
+	config_file=$output_dir/$router/config
+
+	printf "# Distribution configuration\n" > $config_file
+    printf "lxc.include = /usr/share/lxc/config/ubuntu.common.conf\n" >> $config_file 
+    printf "lxc.arch = linux64\n\n" >> $config_file
+
+	printf "# Container specific configuration\n" >> $config_file
+    printf "lxc.rootfs = /var/lib/lxc/%s/rootfs\n" "$router" >> $config_file
+    printf "lxc.rootfs.backend = dir\n" >> $config_file
+    printf "lxc.utsname = %s\n\n" "$router" >> $config_file
+
+	printf "# Network configuration\n" >> $config_file
+    for interface in $(jq -c '.interfaces[]' $file); do
+		ifname=$(echo $interface | jq -r '.ifname')
+		bridge=$(echo $interface | jq -r '.bridge')
+		if [ "$bridge" = "null" ] || [ -z "$ifname" ]; then echo "Error processing interfaces!" ; exit 1 ; fi
+		printf "lxc.network.type = veth\n" >> $config_file
+		printf "lxc.network.link = %s\n" "$bridge" >> $config_file
+		printf "lxc.network.flags = up\n" >> $config_file
+		printf "lxc.network.name = %s\n" "$ifname" >> $config_file
+		printf "lxc.network.veth.pair = %s-%s\n\n" "$router" "$ifname" >> $config_file 
+	done
+}
+
+write_zebra_conf(){
+	config_file=$output_dir/$router/zebra.conf
+	for interface in $(jq -c '.interfaces[]' $file); do
+		ifname=$(echo $interface | jq -r '.ifname')
+		ip_address=$(echo $interface | jq -r '.ipAddress')
+		
+		printf "!\n" >> $config_file
+		printf "interface %s\n" "$ifname" >> $config_file
+        if [ "$ip_address" != "null" ] ; then
+			printf "%2cip address %s\n" " " "$ip_address" >> $config_file
+		fi
+	done
+}
+
+write_ospf_interfaces_conf(){
+	config_file=$output_dir/$router/ospfd.conf
+    for interface in $(jq -c '.interfaces[]' $file); do
+		ifname=$(echo $interface | jq -r '.ifname')
+  		ospf_cost=$(echo $interface | jq -r '.ospfCost')
+		ospf_p2p=$(echo $interface | jq -r '.ospfP2P')
+
+		printf "!\n" >> $config_file
+		printf "interface %s\n" "$ifname" >> $config_file
+		if [ "$ospf_cost" != "null" ] ; then 
+			printf "%2cip ospf cost %s\n" " " "$ospf_cost" >> $config_file
+		fi
+		if [ "$ospf_p2p" == "true" ] ; then 
+			printf "%2cip ospf network point-to-point\n" " " >> $config_file
+		fi
+    done
+}
+
+write_ospf_conf(){
+	config_file=$output_dir/$router/ospfd.conf
+    printf "!\n" >> $config_file
+	printf "router ospf\n" >> $config_file
+    
+    advertises=$(echo $ospf | jq -r '.advertises')
+	for advertise in $(echo $advertises | jq -c '.[]'); do
+        network=$(echo $advertise | jq -r '.network')
+		area=$(echo $advertise | jq -r '.area')
+        printf "%2cnetwork %s area %s\n" " " "$network" "$area" >> $config_file
+	done
+
+	aggregates=$(echo $ospf | jq -r '.aggregates')
+    if [ "$aggregates" != "null" ] ; then
+		for aggregate in $(echo $aggregates | jq -c '.[]'); do
+		    area=$(echo $aggregate | jq -r '.area')
+			range=$(echo $aggregate | jq -r '.range')
+		    printf "%2carea %s range %s\n" " " "$area" "$range" >> $config_file
+		done
+     fi
+
+	passive_interfaces=$(jq -r '.passiveInterfaces' <<< "$ospf")
+	if [ "$passive_interfaces" != "null" ] ; then
+		for passive_interface in $(jq -r -c '.[]' <<< "$passive_interfaces"); do
+			printf "%2cpassive-interface %s\n" " " "$passive_interface" >> $config_file
+		done;
+	fi
+}
+
+write_bgp_conf(){
+	config_file=$output_dir/$router/bgpd.conf
+	printf "!\n" >> $config_file
+
+	asn=$(jq -r '.asn' <<< "$bgp")
+	if [ "$asn" != "null" ] ; then
+		printf "router bgp %s\n" "$asn"  >> $config_file
+	fi
+
+	router_id=$(jq -r '.routerId' <<< "$bgp")
+	if [ "$router_id" != "null" ] ; then
+		printf "%2cbgp router-id %s\n" " " "$router_id" >> $config_file
+	fi
+
+	networks=$(jq -r -c '.networks' <<< "$bgp")
+	if [ "$networks" != "null" ] ; then
+		for network in $(jq -r -c '.[]' <<< "$networks"); do
+			printf "%2cnetwork %s\n" " " "$network" >> $config_file
+		done;
+	fi
+
+	neighbors=$(jq -r '.neighbors' <<< "$bgp")
+  	if [ "$neighbors" != "null" ] ; then
+		for neighbor in $(jq -c '.[]' <<< "$neighbors"); do
+			address=$(jq -r '.address' <<< "$neighbor")
+
+			remote_as=$(jq -r '.remoteAs'  <<< "$neighbor")
+		  printf "%2cneighbor %s remote-as %s\n" " " "$address" "$remote_as" >> $config_file
+		done
+  	fi
+}
+
+write_quagga_services(){
+	config_file=$output_dir/$router/quagga-daemons.sh
+    printf "#!/bin/bash\n" >> $config_file
+	daemons=( $(jq -r '.quagga' $file | jq -r '.[]') )
+	for daemon in "${daemons[@]}" ; do
+		printf "systemctl start %s\n" ${daemon} >> $config_file
+	done
+    chmod u+x $config_file
+}
+
+router=$(jq -r '.id' $file)
+if [ -d "$output_dir/$router" ]; then rm -Rf $output_dir/$router; fi
+mkdir -p $output_dir/$router
+
+write_lxc_config
+write_zebra_conf
+write_ospf_interfaces_conf
+ospf=$(jq -c '.ospf' $file)
+if [ "$ospf" != "null" ] ; then
+    write_ospf_conf
+fi;
+
+touch $output_dir/$router/bgpd.conf
+bgp=$(jq -c '.bgp' $file)
+if [ "$bgp" != "null" ] ; then
+    write_bgp_conf
+fi;
+write_quagga_services

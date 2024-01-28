@@ -1,0 +1,5 @@
+cand_rp local-addr 10.0.6.7 priority 10 
+group_prefix 239.128.0.0 masklen 9  
+switch_data_threshold		rate 30000 interval 20	
+switch_register_threshold	rate 30000 interval 20	
+

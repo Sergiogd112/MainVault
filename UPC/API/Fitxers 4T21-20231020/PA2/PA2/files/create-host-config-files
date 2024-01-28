@@ -1,0 +1,52 @@
+#!/bin/bash
+
+usage () {
+    printf "create-host-config-files -o OUTPUT_DIR FILE\n"
+}
+
+while getopts ":o:d:h" opt; do
+  case $opt in
+    o) output_dir="$OPTARG";;
+    h | [?]) usage ; exit;;
+  esac
+done
+shift "$(($OPTIND -1))"
+if [ -z "$output_dir" ] ; then usage ; exit 1 ; fi
+
+file=$1
+if [ -z "$file" ] ; then usage ; exit 1 ; fi
+
+write_lxc_config(){
+	config_file=$output_dir/$host/config
+
+	printf "# Distribution configuration\n" > $config_file
+    printf "lxc.include = /usr/share/lxc/config/ubuntu.common.conf\n" >> $config_file 
+    printf "lxc.arch = linux64\n\n" >> $config_file
+
+	printf "# Container specific configuration\n" >> $config_file
+    printf "lxc.rootfs = /var/lib/lxc/%s/rootfs\n" "$host" >> $config_file
+    printf "lxc.rootfs.backend = dir\n" >> $config_file
+    printf "lxc.utsname = %s\n\n" "$host" >> $config_file
+
+	printf "# Network configuration\n" >> $config_file
+    for interface in $(jq -c '.interfaces[]' $file); do
+		ifname=$(echo $interface | jq -r '.ifname')
+		bridge=$(echo $interface | jq -r '.bridge')
+		if [ "$bridge" = "null" ] || [ -z "$ifname" ]; then echo "Error processing interfaces!" ; exit 1 ; fi
+		gateway=$(echo $interface | jq -r '.gateway')
+		ip_address=$(echo $interface | jq -r '.ipAddress')
+		printf "lxc.network.type = veth\n" >> $config_file
+		printf "lxc.network.link = %s\n" "$bridge" >> $config_file
+		printf "lxc.network.flags = up\n" >> $config_file
+		printf "lxc.network.name = %s\n" "$ifname" >> $config_file
+		printf "lxc.network.veth.pair = %s-%s\n" "$host" "$ifname" >> $config_file 
+		printf "lxc.network.ipv4 = %s\n" "$ip_address" >> $config_file 
+		printf "lxc.network.ipv4.gateway = %s\n\n" "$gateway" >> $config_file 
+	done
+}
+
+host=$(jq -r '.id' $file)
+if [ -d "$output_dir/$host" ]; then rm -Rf $output_dir/$host; fi
+mkdir -p $output_dir/$host
+
+write_lxc_config

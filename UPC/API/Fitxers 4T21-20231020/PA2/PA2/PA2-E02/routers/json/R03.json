@@ -1,0 +1,31 @@
+{
+	"id": "R03",
+    	"quagga": ["zebra", "ospfd", "bgpd"],
+	"interfaces": [
+		{
+			"ifname": "eth0",
+			"bridge": "br08",
+			"ipAddress": "81.0.0.18/28"
+		},
+		{
+			"ifname": "eth1",
+			"bridge": "br06",
+			"ipAddress": "10.0.0.21/30"
+		},
+		{
+			"ifname": "eth2",
+			"bridge": "br13",
+			"ipAddress": "81.0.0.65/28"
+		}
+	],
+	"ospf": {
+			"advertises" : [
+							{"network":"10.0.0.20/30", "area":"0.0.0.0"},
+							{"network":"81.0.0.64/28", "area":"0.0.0.0"},
+							{"network":"81.0.0.16/28", "area":"0.0.0.0"}
+        ],
+			"passiveInterfaces" : ["eth1"]
+		},
+	"bgp": {
+	}
+}

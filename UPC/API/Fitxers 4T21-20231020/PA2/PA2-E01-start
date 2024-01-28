@@ -1,0 +1,6 @@
+#!/bin/bash
+/home/api/practiques/PA2/files/load-scenario /home/api/practiques/PA2/PA2-E01
+/home/api/practiques/PA2/files/start-scenario /home/api/practiques/PA2/PA2-E01
+for i in `seq 60 -1 1` ; do echo -ne "\r$i " ; sleep 1 ; done
+echo ""
+/home/api/practiques/PA2/files/start-pimd /home/api/practiques/PA2/PA2-E01

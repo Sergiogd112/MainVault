@@ -1,0 +1,54 @@
+#!/bin/bash
+
+usage () {
+    printf "restore-scenario [-h] [-c BACKUP_FILE] [SCENARIO_FILE]\n"
+}
+while getopts "c:h" opt; do
+  case $opt in
+	c) backup_file="$OPTARG";;
+    h | [?]) usage ; exit;;
+  esac
+done
+shift "$(($OPTIND -1))"
+scenario_file=$1
+if [ -z "$scenario_file" ] ; then
+	scenario_file="scenario.json"
+fi
+
+read -r -p "Do you want to continue? [y/N] " response
+if [[ ! "$response" =~ ^([yY])+$ ]] ; then
+	echo "Abortado."
+	exit
+fi
+
+backup_dir=$(jq -r '.backupDir' $scenario_file)
+
+if [ ! -z "$backup_file" ] ; then 
+	if [ -d "$backup_dir" ] ; then rm -r $backup_dir ; fi
+	tar -zxf $backup_file 
+fi
+
+routers_conf_dir=$(jq -r '.routersConfDir' $scenario_file)
+hosts_conf_dir=$(jq -r '.hostsConfDir' $scenario_file)
+
+if [ -d $backup_file/results ]; then
+   mkdir -p results
+   cp -r $backup_dir/results/* results
+fi
+
+if [ -d $backup_file/config-pim ]; then
+   mkdir -p config-pim
+   cp -r $backup_dir/config-pim/* config-pim
+fi
+
+if [ -d $backup_file/scripts ]; then
+   mkdir -p scripts
+   cp -r $backup_dir/scripts/* scripts
+fi
+
+../files/reset-scenario $PWD
+mkdir -p $routers_conf_dir
+mkdir -p $hosts_conf_dir
+cp -r $backup_dir/$routers_conf_dir/* $routers_conf_dir
+cp -r $backup_dir/$hosts_conf_dir/* $hosts_conf_dir
+../files/start-scenario $PWD

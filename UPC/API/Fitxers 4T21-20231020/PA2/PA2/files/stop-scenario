@@ -1,0 +1,72 @@
+#!/bin/bash
+
+usage () {
+    printf "stop-scenario [-h] [SCENARIO_FILE]\n"
+}
+while getopts "h" opt; do
+  case $opt in
+    h | [?]) usage ; exit;;
+  esac
+done
+shift "$(($OPTIND -1))"
+scenario_file=$1
+if [ -z "$scenario_file" ]; then
+	scenario_file="scenario.json"
+fi
+
+num_bridges=$(jq -r '.numBridges' $scenario_file)
+routers_conf_dir=$(jq -r '.routersConfDir' $scenario_file)
+hosts_conf_dir=$(jq -r '.hostsConfDir' $scenario_file)
+original_configs_dir=$(jq -r '.originalConfigsDir' $scenario_file)
+
+#api_host_dir="api-host"
+#api_router_dir="api-router"
+api_host_dir="api"
+api_router_dir="api"
+
+if [ -d "$routers_conf_dir" ] ; then
+	routers=($(ls -d $routers_conf_dir/*))
+	for router in ${routers[*]}; do
+		IFS='/' read -r -a path <<< $(echo $router)
+		if [ -d "$original_configs_dir" ] ; then cp $original_configs_dir/routers/${path[-1]}/config /var/lib/lxc/${path[-1]}/ ; fi
+		if [ -f /var/lib/lxc/${path[-1]}/rootfs/usr/local/sbin/quagga-daemons.sh ] ; then rm /var/lib/lxc/${path[-1]}/rootfs/usr/local/sbin/quagga-daemons.sh ; fi
+		rm /var/lib/lxc/${path[-1]}/rootfs/etc/quagga/*.conf
+		cp /var/lib/lxc/$api_router_dir/rootfs/etc/quagga/*.conf /var/lib/lxc/${path[-1]}/rootfs/etc/quagga 
+
+		printf "Stopping router %s .......... " ${path[-1]}
+		lxc-stop -n ${path[-1]} 2>/dev/null
+		printf "DONE!\n"
+	done
+fi
+
+if [ -d "$routers_conf_dir" ] ; then
+	if [ ! -z "$hosts_conf_dir" ] ; then
+		hosts=($(ls -d $hosts_conf_dir/*))
+		for host in ${hosts[*]}; do
+			IFS='/' read -r -a path <<< $(echo $host)
+			if [ -d "$original_configs_dir" ] ; then cp $original_configs_dir/hosts/${path[-1]}/config /var/lib/lxc/${path[-1]}/ ; fi
+			printf "Stopping host %s .......... " ${path[-1]}
+			lxc-stop -n ${path[-1]} 2>/dev/null
+			printf "DONE!\n"
+		done
+	fi
+fi
+
+for ((i=1; i<=$num_bridges; i++)) ; do
+	br_check=$(brctl show | grep $(printf "br%02d" $i))
+	if [ ! -z "$br_check" ]; then
+		printf "Setting down bridge br%02d .......... " $i
+		ip link set dev $(printf "br%02d" $i) down 2>/dev/null
+		printf "DONE!\n" $i
+
+		printf "Deleting bridge br%02d .......... " $i
+		brctl delbr $(printf "br%02d" $i) 2>/dev/null
+		printf "DONE!\n" $i
+	fi
+done
+
+if [ -d "$routers_conf_dir" ] ; then rm -fr $routers_conf_dir ; fi
+if [ -d "$hosts_conf_dir" ] ; then rm -fr $hosts_conf_dir ; fi
+if [ -d "$original_configs_dir" ] ; then rm -fr $original_configs_dir ; fi
+
+printf "Scenario stopped\n"

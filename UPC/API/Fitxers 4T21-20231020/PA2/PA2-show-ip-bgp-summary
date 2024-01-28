@@ -1,0 +1,3 @@
+#!/bin/bash
+/home/api/practiques/PA2/files/save-show-ip-bgp-summary /home/api/practiques/PA2/PA2-E02 $1
+

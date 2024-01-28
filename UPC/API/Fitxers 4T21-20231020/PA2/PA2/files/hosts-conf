@@ -1,0 +1,25 @@
+#!/bin/bash
+scripts=/home/api/practiques/PA2/files/
+
+usage () {
+	printf "hosts-conf -i JSON_DIR -o CONF_DIR\n"
+}
+
+while getopts "o:i:h" opt; do
+  case $opt in
+    o) output_dir="$OPTARG";;
+	i) json_dir="$OPTARG";;
+    h | [?]) usage ; exit;;
+  esac
+done
+shift "$(($OPTIND -1))"
+if [ -z "$output_dir" ] || [ -z "$json_dir" ] ; then usage ; exit 1 ; fi
+array=($(ls $json_dir/*.json 2>/dev/null)) 
+
+if [ ! -z "$array" ]; then
+for json in ${array[*]}; do
+#	printf "Creating host configuration files from %s........ " "$json"
+	$scripts/create-host-config-files -o $output_dir $json
+#	printf "DONE!\n"
+done
+fi

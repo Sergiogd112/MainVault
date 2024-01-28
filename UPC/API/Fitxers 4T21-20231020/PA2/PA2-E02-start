@@ -1,0 +1,4 @@
+#!/bin/bash
+/home/api/practiques/PA2/files/load-scenario /home/api/practiques/PA2/PA2-E02
+/home/api/practiques/PA2/files/start-scenario /home/api/practiques/PA2/PA2-E02
+

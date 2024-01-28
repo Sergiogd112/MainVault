@@ -1,0 +1,14 @@
+#!/bin/bash
+printf "Starting receiver\n"
+xterm -hold -T Receiver -e lxc-attach -n PC04 -- mgen input /home/mgen/file_mgen_receiver &
+printf "Starting receiver\n"
+xterm -hold -T Receiver -e lxc-attach -n PC05 -- mgen input /home/mgen/file_mgen_receiver &
+printf "Starting receiver\n"
+xterm -hold -T Receiver -e lxc-attach -n PC07 -- mgen input /home/mgen/file_mgen_receiver &
+printf "Starting receiver\n"
+xterm -hold -T Receiver -e lxc-attach -n PC08 -- mgen input /home/mgen/file_mgen_receiver &
+sleep 5
+printf "Starting source\n"
+xterm -hold -T Source -e lxc-attach -n PC01 -- mgen input /home/mgen/file_mgen_source_11 &
+printf "Starting source\n"
+xterm -hold -T Source -e lxc-attach -n PC03 -- mgen input /home/mgen/file_mgen_source_33 &

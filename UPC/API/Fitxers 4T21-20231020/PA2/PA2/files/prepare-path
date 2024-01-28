@@ -1,0 +1,5 @@
+#!/bin/bash
+mkdir -p /home/api/PA2/
+cp -r ../P02 /home/api/PA2/
+cp -r ../scripts /home/api/PA2/
+printf "export PATH=$PATH:/home/api/PA2/scripts\n" >> ~/.bashrc

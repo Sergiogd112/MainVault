@@ -20,6 +20,50 @@
             }
           },
           {
+            "id": "65c4cee49ec78a6d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "UPC/CA1/Formulario CA1.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "6f01c96be398a20e",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2023-10-25 16.48.25.excalidraw.md"
+              }
+            }
+          },
+          {
+            "id": "6e13ebb9150d6eaf",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "Excalidraw/Drawing 2023-11-16 16.11.58.excalidraw.md"
+              }
+            }
+          },
+          {
+            "id": "4b1a16df3ff02035",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "UPC/CESA/FQ.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
             "id": "0f5701ca7101ba29",
             "type": "leaf",
             "state": {
@@ -27,7 +71,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -93,7 +138,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "UPC/API/PIM-SM.md",
+                "file": "UPC/CESA/FQ.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +155,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "UPC/API/PIM-SM.md",
+                "file": "UPC/CESA/FQ.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +178,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "UPC/API/PIM-SM.md"
+                "file": "UPC/CESA/FQ.md"
               }
             }
           },
@@ -143,7 +188,9 @@
             "state": {
               "type": "all-properties",
               "state": {
-                "sortOrder": "frequency"
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
               }
             }
           }
@@ -166,41 +213,47 @@
       "obsidian-map-view:Open map view": false
     }
   },
-  "active": "277b8a36bf7a1f3c",
+  "active": "4b1a16df3ff02035",
   "lastOpenFiles": [
+    "UPC/API/PIM-SM.md",
+    "UPC/CESA/FQ.md",
+    "UPC/CSF/Pasted image 20240114233246.png",
+    "UPC/CSF/Pasted image 20240114233103.png",
+    "UPC/CSF/Pasted image 20240114232907.png",
+    "UPC/CSF/Pasted image 20240114232705.png",
+    "UPC/CSF/Pasted image 20240114175240.png",
+    "UPC/CSF/FQCSF.md",
+    "UPC/CSF/Pasted image 20240114232313.png",
+    "UPC/CSF/Pasted image 20240114231628.png",
+    "UPC/CSF/Pasted image 20240114231352.png",
+    "UPC/CSF/Pasted image 20240114175534.png",
+    "Excalidraw/Drawing 2023-11-16 16.11.58.excalidraw.md",
+    "UPC/CSF",
+    "Excalidraw/Drawing 2023-10-25 16.48.25.excalidraw.md",
+    "Excalidraw/Scripts/Downloaded/Auto Draw for Pen.svg",
+    "Excalidraw/Scripts/Downloaded/Auto Draw for Pen.md",
+    "Excalidraw/Scripts/Downloaded",
+    "Excalidraw/Scripts",
+    "UPC/CA1/Formulario CA1.md",
+    "Excalidraw/Drawing 2023-10-25 16.47.32.excalidraw.md",
+    "Excalidraw",
+    "UPC/CA1",
     "UPC/CESA/Práctica 4-20231015/Pract4_Circuitos supervision y proteccion baterias_2023.pdf",
     "UPC/CESA/Práctica 4-20231015/ICL7665.pdf",
     "UPC/CESA/Práctica 4-20231015/FDN304P.pdf",
     "UPC/CESA/Práctica 4-20231015",
     "UPC/CESA/Práctica 4-20231015.zip",
-    "UPC/CESA/Unconfirmed 164405.crdownload",
-    "UPC/API/Pract4_Circuitos supervision y proteccion baterias_2023.pdf",
-    "UPC/API/Unconfirmed 366894.crdownload",
-    "UPC/API/show_ip_route_vtysh.py",
-    "UPC/API/Unconfirmed 404363.crdownload",
     "UPC/API/Mutlicast.md",
     "MULTICAST.md",
-    "UPC/API/PIM-SM.md",
     "UPC/API/IGMP.md",
     "Política/Independentismo/Madrid/Resumen.md",
-    "UPC/API",
     "UPC/Electri/Practicas/P1/P1_Cicuits_DC.md",
-    "UPC/Electri/Practicas/P1/Pasted image 20230912231930.png",
-    "UPC/Electri/Practicas/P1/Pasted image 20230912231858.png",
-    "UPC/Electri/Practicas/P1/Pasted image 20230912231718.png",
-    "UPC/Electri/Practicas/P1/Pasted image 20230912231449.png",
-    "UPC/Electri/Practicas/P1/Pasted image 20230912231056.png",
-    "UPC/Electri/Practicas/P1/Pasted image 20230912230838.png",
-    "UPC/Electri/Practicas/P1/Pasted image 20230912224844.png",
-    "UPC/Electri/Practicas/P1/ElectriP1_E1.png",
     "UPC/CESA/Fuentes_energia.md",
     "UPC/CESA/Circuitos_Electrónicos_y_Sistemas_de_Alimentación.md",
-    "UPC/CESA/Diagrama red electrica.png",
     "UPC/CESA/Evolucion_y_características_generales_SA.md",
     "UPC/CESA/Normativa.md",
     "UPC/CESA/Toplogia de la red.md",
     "UPC/CESA/Trifásica a monofásica.md",
-    "UPC/CESA/Transformacion trifasica a monofasica.png",
     "UPC/Electri/Practicas/P1/excalibrain.md",
     "Excalidraw/Drawing 2023-08-23 10.44.38.excalidraw.md",
     "UPC/CESA/Evolución_y_características_generales_SA.md",
@@ -208,8 +261,6 @@
     "().md",
     "SET Research/SET.md",
     "Coulomb.md",
-    "UPC/AM2/Combinatoria.md",
-    "Untitled.canvas",
-    "README.md"
+    "Untitled.canvas"
   ]
 }

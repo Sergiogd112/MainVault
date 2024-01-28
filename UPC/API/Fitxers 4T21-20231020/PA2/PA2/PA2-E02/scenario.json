@@ -1,0 +1,13 @@
+{
+	"id": "QT2324-PA2-E02",
+	"description": "E02",
+	"numBridges": 18,
+	"homeDir": "/home/api/practiques/PA2/PA2-E02",
+	"routersJSONDir": "routers/json",
+	"hostsJSONDir": "hosts/json",
+	"routersConfDir": "routers/conf",
+	"hostsConfDir": "hosts/conf",
+	"backupDir": "backup",
+	"originalConfigsDir": ".original-configs"
+}
+	

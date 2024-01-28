@@ -1,0 +1,9 @@
+{
+	"id": "PC04",
+	"interfaces": [{
+			"ifname": "eth0",
+			"bridge": "br14",
+			"ipAddress": "7.0.0.2/28",
+			"gateway": "7.0.0.1"
+		}]
+}

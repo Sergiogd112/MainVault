@@ -1,0 +1,15 @@
+#!/bin/bash
+count_dirs () {
+    dir=$1   
+    regexp=$2
+    wc -l < <( awk '{print $NF}' < <(ls -l $dir) | grep -P $regexp )
+}
+routers=$(count_dirs "/var/lib/lxc/" "^R[0-9]{2}$")
+
+for ((i=1; i<=$routers; i++)); do 
+    var=$(lxc-info -n $(printf "R%02d" $i) | grep State: | awk '{print $2}')
+    if [ $var == "RUNNING" ]; then
+        lxc-attach -n $(printf "R%02d" $i) -- pkill -9 pimd
+    fi
+done
+

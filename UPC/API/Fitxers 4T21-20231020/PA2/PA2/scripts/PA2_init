@@ -1,0 +1,17 @@
+#!/bin/bash
+apt install -y jq
+FOLDER=/home/api/practiques/PA2/PA2-E01/
+find $FOLDER -name "*.tgz" -type f -delete
+FOLDER=/home/api/practiques/PA2/PA2-E02/
+find $FOLDER -name "*.tgz" -type f -delete
+FOLDER=/home/api/practiques/PA2/PA2-E01/results
+if [ -d $FOLDER ]
+ then rm -R $FOLDER
+ mkdir $FOLDER
+fi
+FOLDER=/home/api/practiques/PA2/PA2-E02/results
+if [ -d $FOLDER ]
+ then rm -R $FOLDER
+ mkdir $FOLDER
+fi
+chmod +x /home/api/practiques/PA2/files/*

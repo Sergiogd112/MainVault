@@ -1,0 +1,26 @@
+#!/bin/bash
+
+usage () {
+    printf "save-mroute dir file\n"
+}
+
+dir=$1
+results_file=$2
+scenario_file=$dir/scenario.json
+routers_conf_dir=$dir/routers/conf
+hosts_conf_dir=$dir/hosts/conf
+
+if [ -f $dir/results/$results_file ]; then
+	rm $dir/results/$results_file
+fi
+routers=($(ls -d $routers_conf_dir/*))
+for router in ${routers[*]}; do
+	IFS='/' read -r -a path <<< $(echo $router)
+	router_id=${path[-1]}
+	printf "*** Saving mroute of router %s ***\n" "$router_id"
+	printf "%s# mroute\n" "$router_id" >> $dir/results/$results_file
+	lxc-attach -n $router_id -- mroute >> $dir/results/$results_file
+	printf "\n\n" >> $dir/results/$results_file
+done
+
+

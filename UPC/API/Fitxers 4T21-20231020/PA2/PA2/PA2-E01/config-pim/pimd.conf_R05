@@ -1,0 +1,4 @@
+switch_data_threshold		rate 50000 interval 20	
+switch_register_threshold	rate 50000 interval 20	
+
+

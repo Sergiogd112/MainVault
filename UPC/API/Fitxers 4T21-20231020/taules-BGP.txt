@@ -1,0 +1,153 @@
+R01# show ip bgp
+BGP table version is 0, local router ID is  10.0.0.5
+Status codes: s suppressed, d damped, h history, * valid, > best, = multipath,
+              i internal, r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*> 7.0.0.0/16       10.0.0.6                 0             0 125 i
+*>i43.0.0.0/16      10.0.0.22                5    120      0 205 i
+* i81.0.0.0/16      81.0.0.18                0           0 i
+* i                 81.0.0.2                 0    100      0 i
+*>                  0.0.0.0                  0         32768 i
+*  118.0.0.0/16     10.0.0.6                               0 125    i
+*>i                 10.0.0.10                0    100      0 32 i
+
+Displayed  4 out of 7 total prefixes
+
+
+R02# show ip bgp
+BGP table version is 0, local router ID is 10.0.0.13
+Status codes: s suppressed, d damped, h history, * valid, > best, = multipath,
+              i internal, r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*  7.0.0.0/16       10.0.0.10                              0 32 125 i
+*>i                 10.0.0.6                 0    100      0 125 i
+*  43.0.0.0/16      10.0.0.10                              0 32 205 i
+*>i                 10.0.0.22                5    120      0 205 i
+*                   10.0.0.14                3     40      0 205 i
+* i81.0.0.0/16      81.0.0.1                 0    100      0 i
+* i                 81.0.0.18                0    100      0 i
+*>                  0.0.0.0                  0         32768 i
+*  118.0.0.0/16     10.0.0.14                3             0 205 32 i
+*>                  10.0.0.10                0             0 32 i
+
+Displayed  4 out of 10 total prefixes
+
+
+R03# show ip bgp
+BGP table version is 0, local router ID is 10.0.0.21
+Status codes: s suppressed, d damped, h history, * valid, > best, = multipath,
+              i internal, r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*>i7.0.0.0/16       10.0.0.6                 0    100      0 125 i
+*> 43.0.0.0/16                               5    120      0 205 i
+* i81.0.0.0/16      81.0.0.1                 0    100      0 i
+* i                 81.0.0.17                0    100      0 i
+*>                  0.0.0.0                  0         32768 i
+*  118.0.0.0/16     10.0.0.22                5             0 205 32 i
+*>i                 10.0.0.10                0    100      0 32 i
+
+Displayed  4 out of 7 total prefixes
+
+
+R04# show ip bgp
+BGP table version is 0, local router ID is 10.0.0.6
+Status codes: s suppressed, d damped, h history, * valid, > best, = multipath,
+              i internal, r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*> 7.0.0.0/16       0.0.0.0                  0         32768 i
+*  43.0.0.0/16      10.0.0.2                               0 32 205 i
+*>                  10.0.0.5                             300 67 205 i
+*  81.0.0.0/16      10.0.0.2                               0 32 67 i
+*>                  10.0.0.5                 0             0 67 i
+*  118.0.0.0/16     10.0.0.5                               0 67 32 i
+*>                  10.0.0.2                 0             0 32 i
+
+Displayed  4 out of 7 total prefixes
+
+
+R05# show ip bgp
+BGP table version is 0, local router ID is 10.0.0.10
+Status codes: s suppressed, d damped, h history, * valid, > best, = multipath,
+              i internal, r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*  7.0.0.0/16       10.0.0.9                               0 67 125 i
+*>                  10.0.0.1                 0             0 125 i
+*  43.0.0.0/16      10.0.0.1                               0 125 67 205 i
+*                   10.0.0.9                               0 67 205 i
+*>i                 10.0.0.18                0    100      0 205 i
+*  81.0.0.0/16      10.0.0.1                               0 125 67 i
+*>                  10.0.0.9                 0             0 67 i
+* i118.0.0.0/16     118.0.0.2                0    100      0 i
+*>                  0.0.0.0                  0         32768 i
+
+Displayed  4 out of 9 total prefixes
+
+
+R06# show ip bgp
+BGP table version is 0, local router ID is 10.0.0.17
+Status codes: s suppressed, d damped, h history, * valid, > best, = multipath,
+              i internal, r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*  7.0.0.0/16       10.0.0.18                              0 205 67 125 i
+*>i                 10.0.0.1                 0    100      0 125 i
+*> 43.0.0.0/16      10.0.0.18                0             0 205 i
+*  81.0.0.0/16      10.0.0.18                              0 205 67 i
+*>i                 10.0.0.9                 0    100      0 67 i
+* i118.0.0.0/16     118.0.0.1                0    100      0 i
+*>                  0.0.0.0                  0         32768 i
+
+Displayed  4 out of 7 total prefixes
+
+
+R07# show ip bgp
+BGP table version is 0, local router ID is 10.0.0.22
+Status codes: s suppressed, d damped, h history, * valid, > best, = multipath,
+              i internal, r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+* i7.0.0.0/16       10.0.0.13                     100      0 67 125 i
+*>                  10.0.0.21                              0 67 125 i
+* i43.0.0.0/16      43.0.0.2                 0    100      0 i
+*>                  0.0.0.0                  0         32768 i
+* i81.0.0.0/16      10.0.0.13                0    100      0 67 i
+*>                  10.0.0.21                0             0 67 i
+*  118.0.0.0/16     10.0.0.21                              0 67 32 i
+*>i                 10.0.0.17                0    100      0 32 i
+
+Displayed  4 out of 8 total prefixes
+
+
+R08# show ip bgp
+BGP table version is 0, local router ID is 10.0.0.18
+Status codes: s suppressed, d damped, h history, * valid, > best, = multipath,
+              i internal, r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+* i7.0.0.0/16       10.0.0.21                     100      0 67 125 i
+*>                  10.0.0.13                            500 67 125 i
+*                   10.0.0.17                              0 32 125 i
+* i43.0.0.0/16      43.0.0.1                 0    100      0 i
+*>                  0.0.0.0                  0         32768 i
+*  81.0.0.0/16      10.0.0.17                              0 32 67 i
+* i                 10.0.0.21                0    100      0 67 i
+*>                  10.0.0.13                0             0 67 i
+*  118.0.0.0/16     10.0.0.13                              0 67 32 i
+*>                  10.0.0.17                0             0 32 i
+
+Displayed  4 out of 10 total prefixes
+
+

@@ -1,0 +1,23 @@
+{
+	"id": "R04",
+    	"quagga": ["zebra", "bgpd"],
+	"interfaces": [
+		{
+			"ifname": "eth0",
+			"bridge": "br02",
+			"ipAddress": "10.0.0.6/30"
+		},
+		{
+			"ifname": "eth1",
+			"bridge": "br01",
+			"ipAddress": "10.0.0.1/30"
+		},
+		{
+			"ifname": "eth2",
+			"bridge": "br14",
+			"ipAddress": "7.0.0.1/28"
+		}
+	],
+	"bgp": {
+	}
+}

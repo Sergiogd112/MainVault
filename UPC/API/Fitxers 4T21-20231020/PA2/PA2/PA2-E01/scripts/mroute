@@ -1,0 +1,7 @@
+#!/bin/bash
+PIDFile="/run/pimd.pid"
+CurPID=$(<"$PIDFile")
+
+kill -10 $CurPID
+
+more "/run/pimd/pimd.dump"

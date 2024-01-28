@@ -1,0 +1,46 @@
+{
+	"id": "R05",
+    	"quagga": ["zebra", "ospfd", "bgpd"],
+	"interfaces": [
+		{
+			"ifname": "eth0",
+			"bridge": "br01",
+			"ipAddress": "10.0.0.2/30"
+		},
+		{
+			"ifname": "eth1",
+			"bridge": "br03",
+			"ipAddress": "10.0.0.10/30"
+		},
+		{
+			"ifname": "eth2",
+			"bridge": "br09",
+			"ipAddress": "118.0.0.1/28"
+		},
+		{
+			"ifname": "eth3",
+			"bridge": "br15",
+			"ipAddress": "118.0.0.17/28"
+		}
+	],
+	"ospf": {
+			"advertises" : [
+							{"network":"10.0.0.0/30", "area":"0.0.0.0"},
+							{"network":"10.0.0.8/30", "area":"0.0.0.0"},
+							{"network":"118.0.0.0/28", "area":"0.0.0.0"},
+							{"network":"118.0.0.16/28", "area":"0.0.0.0"}
+        ],
+			"passiveInterfaces" : ["eth0","eth1"]
+		},
+	"bgp": {
+			"asn": "32",
+			"routerId" : "10.0.0.10",
+			"networks" : ["118.0.0.0/16"],
+			"neighbors" : [
+				{"address":"118.0.0.2","remoteAs":"32"},
+				{"address":"10.0.0.1","remoteAs":"125"},
+				{"address":"10.0.0.9","remoteAs":"67"}
+			]
+
+		}
+}

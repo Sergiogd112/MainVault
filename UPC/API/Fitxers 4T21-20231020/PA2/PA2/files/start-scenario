@@ -1,0 +1,91 @@
+#!/bin/bash
+MAX_QUAGGA_RETRIES=10
+usage () {
+    printf "start-scenario [-h] home_dir [SCENARIO_FILE]\n"
+}
+while getopts "h" opt; do
+  case $opt in
+    h | [?]) usage ; exit;;
+  esac
+done
+shift "$(($OPTIND -1))"
+scenario_file=$2
+if [ -z "$scenario_file" ]; then
+	scenario_file="scenario.json"
+fi
+
+home_dir=$1
+scenario_file=$home_dir/$scenario_file
+
+sysctl -w fs.inotify.max_user_instances=1024 1>/dev/null
+
+num_bridges=$(jq -r '.numBridges' $scenario_file)
+routers_conf_dir=$home_dir/$(jq -r '.routersConfDir' $scenario_file)
+hosts_conf_dir=$home_dir/$(jq -r '.hostsConfDir' $scenario_file)
+original_configs_dir=$home_dir/$(jq -r '.originalConfigsDir' $scenario_file)
+
+if [ ! -d "$routers_conf_dir" ] || [ ! -d "$hosts_conf_dir" ] ; then
+	echo "The scenario has not been loaded. Execute load-scenario first."
+	exit
+fi
+
+for ((i=1; i<=$num_bridges; i++)) ; do
+#	printf "Creating bridge br%02d .......... " $i
+	brctl addbr $(printf "br%02d" $i) 2>/dev/null
+#	printf "DONE!\n" $i
+
+#    printf "Starting bridge br%02d .......... " $i
+    ip link set dev $(printf "br%02d" $i) up
+#    printf "DONE!\n" $i
+done
+
+routers=($(ls -d $routers_conf_dir/*))
+for router in ${routers[*]}; do
+	IFS='/' read -r -a path <<< $(echo $router)
+    mkdir -p $original_configs_dir/routers/${path[-1]}
+	cp /var/lib/lxc/${path[-1]}/config $original_configs_dir/routers/${path[-1]}
+
+	cp $router/config /var/lib/lxc/${path[-1]}/
+	cp $router/quagga-daemons.sh /var/lib/lxc/${path[-1]}/rootfs/usr/local/sbin
+	confs=($(ls -d $routers_conf_dir/${path[-1]}/*.conf))
+	for conf in ${confs[*]} ; do
+		cp $conf /var/lib/lxc/${path[-1]}/rootfs/etc/quagga
+	done 
+	printf "Starting router %s .......... " ${path[-1]}
+	lxc-start -n ${path[-1]} 2>/dev/null
+	printf "DONE!\n"
+done
+
+for router in ${routers[*]}; do
+	IFS='/' read -r -a path <<< $(echo $router)
+#	printf "Starting quagga daemons in router %s .......... " ${path[-1]}
+    rc=1
+	counter=0
+    while [ $rc -eq 1 ] && [ $counter -lt $MAX_QUAGGA_RETRIES ] ; do
+		lxc-attach -n ${path[-1]} -- quagga-daemons.sh 2>/dev/null
+    	rc=$?
+		let counter=counter+1
+		if [ $rc -eq 1 ] ; then
+#			printf "KO (%d/%d)... " "$counter" "$MAX_QUAGGA_RETRIES"
+			sleep 1s
+		fi
+	done
+#	if [ $rc -eq 0 ] ; then
+#		printf "OK!\n"
+#	fi
+done
+
+if [ ! -z "$hosts_conf_dir" ] ; then
+	hosts=($(ls -d $hosts_conf_dir/*))
+	for host in ${hosts[*]}; do
+		IFS='/' read -r -a path <<< $(echo $host)
+
+		mkdir -p $original_configs_dir/hosts/${path[-1]}
+		cp /var/lib/lxc/${path[-1]}/config $original_configs_dir/hosts/${path[-1]}
+
+		cp $host/config /var/lib/lxc/${path[-1]}/ 
+		printf "Starting host %s .......... " ${path[-1]}
+		lxc-start -n ${path[-1]} 2>/dev/null
+		printf "DONE!\n"
+	done
+fi
