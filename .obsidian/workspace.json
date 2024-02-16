@@ -4,75 +4,32 @@
     "type": "split",
     "children": [
       {
-        "id": "43e305a60de71da7",
+        "id": "23c47bbb0f56f169",
         "type": "tabs",
         "children": [
           {
-            "id": "277b8a36bf7a1f3c",
+            "id": "e4f6bec7a0f84784",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UPC/API/PIM-SM.md",
+                "file": "UPC/ERF/Tema 1.md",
                 "mode": "source",
                 "source": false
               }
             }
           },
           {
-            "id": "65c4cee49ec78a6d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "UPC/CA1/Formulario CA1.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "6f01c96be398a20e",
+            "id": "d9ff336503bffcc3",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "Excalidraw/Drawing 2023-10-25 16.48.25.excalidraw.md"
+                "file": "Excalidraw/Drawing 2024-02-16 19.43.25.excalidraw.md"
               }
-            }
-          },
-          {
-            "id": "6e13ebb9150d6eaf",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Drawing 2023-11-16 16.11.58.excalidraw.md"
-              }
-            }
-          },
-          {
-            "id": "4b1a16df3ff02035",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "UPC/CESA/FQ.md",
-                "mode": "source",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0f5701ca7101ba29",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -138,7 +95,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "UPC/CESA/FQ.md",
+                "file": "UPC/ERF/Tema 1.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -155,7 +112,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "UPC/CESA/FQ.md",
+                "file": "UPC/ERF/Tema 1.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -178,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "UPC/CESA/FQ.md"
+                "file": "UPC/ERF/Tema 1.md"
               }
             }
           },
@@ -213,10 +170,18 @@
       "obsidian-map-view:Open map view": false
     }
   },
-  "active": "4b1a16df3ff02035",
+  "active": "e4f6bec7a0f84784",
   "lastOpenFiles": [
-    "UPC/API/PIM-SM.md",
+    "UPC/ERF/lienatransmision.svg",
+    "Excalidraw/Drawing 2024-02-16 19.43.25.excalidraw.md",
+    "UPC/ERF/Tema 1.md",
+    "UPC/ERF",
+    "TFG/SERVER",
+    "TFG/DRON",
+    "Untitled",
+    "TFG",
     "UPC/CESA/FQ.md",
+    "UPC/API/PIM-SM.md",
     "UPC/CSF/Pasted image 20240114233246.png",
     "UPC/CSF/Pasted image 20240114233103.png",
     "UPC/CSF/Pasted image 20240114232907.png",
@@ -238,11 +203,6 @@
     "Excalidraw/Drawing 2023-10-25 16.47.32.excalidraw.md",
     "Excalidraw",
     "UPC/CA1",
-    "UPC/CESA/Práctica 4-20231015/Pract4_Circuitos supervision y proteccion baterias_2023.pdf",
-    "UPC/CESA/Práctica 4-20231015/ICL7665.pdf",
-    "UPC/CESA/Práctica 4-20231015/FDN304P.pdf",
-    "UPC/CESA/Práctica 4-20231015",
-    "UPC/CESA/Práctica 4-20231015.zip",
     "UPC/API/Mutlicast.md",
     "MULTICAST.md",
     "UPC/API/IGMP.md",
@@ -258,9 +218,6 @@
     "Excalidraw/Drawing 2023-08-23 10.44.38.excalidraw.md",
     "UPC/CESA/Evolución_y_características_generales_SA.md",
     "SET Research/Coulomb_blockade.md",
-    "().md",
-    "SET Research/SET.md",
-    "Coulomb.md",
     "Untitled.canvas"
   ]
 }
