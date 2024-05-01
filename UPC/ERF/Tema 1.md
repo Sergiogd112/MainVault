@@ -82,3 +82,38 @@ $$
 $$
 
 Donde $Z_0$ es la impedancia característica de la línea de transmisión.
+
+En el tiempo la ecuación de onda para una línea de transmisión es:
+$$
+  v(z,t)=|V_0^+|e^{-\alpha z}\cos(\omega t-\beta z+\angle V_0^+)+|V_0^-|e^{-\alpha z}\cos(\omega t+\beta z+\angle V_0^-)
+$$
+Velocidad de fase:
+$$
+  v_p=\frac{\omega}{\beta}
+$$
+
+## Caso sin perdidas
+Si la línea de transmisión no tiene perdidas entonces anulamos $R$ y $G$ por lo que la impedancia característica de la línea de transmisión es:
+
+$$
+  Z_0=\sqrt{\frac{L_d}{C_d}}
+$$
+
+$$
+  \gamma=j\omega\sqrt{L_dC_d}
+$$
+
+$$
+  v_p=\frac{1}{\sqrt{L_dC_d}}=\frac{c}{n}
+$$
+
+Donde $c$ es la velocidad de la luz en el vacío y $n$ es el índice de refracción del dieléctrico.
+
+$$
+  V(z)=V_0^+e^{-j\beta z}+V_0^-e^{j\beta z}
+$$
+
+$$
+  I(z)=\frac{V_0^+}{Z_0}e^{-j\beta z}-\frac{V_0^-}{Z_0}e^{j\beta z}
+$$
+$$

@@ -4,28 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "23c47bbb0f56f169",
+        "id": "cd8eeb0d7852b7f2",
         "type": "tabs",
         "children": [
           {
-            "id": "e4f6bec7a0f84784",
+            "id": "002b751fb1575aa6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UPC/ERF/Tema 1.md",
+                "file": "UPC/API/Comandos.md",
                 "mode": "source",
                 "source": false
-              }
-            }
-          },
-          {
-            "id": "d9ff336503bffcc3",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "Excalidraw/Drawing 2024-02-16 19.43.25.excalidraw.md"
               }
             }
           }
@@ -95,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "UPC/ERF/Tema 1.md",
+                "file": "UPC/API/Comandos.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -112,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "UPC/ERF/Tema 1.md",
+                "file": "UPC/API/Comandos.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "UPC/ERF/Tema 1.md"
+                "file": "UPC/API/Comandos.md"
               }
             }
           },
@@ -170,11 +160,14 @@
       "obsidian-map-view:Open map view": false
     }
   },
-  "active": "e4f6bec7a0f84784",
+  "active": "002b751fb1575aa6",
   "lastOpenFiles": [
-    "UPC/ERF/lienatransmision.svg",
+    "UPC/API/Pasted image 20240228214522.png",
+    "UPC/API/Pasted image 20240228214541.png",
+    "UPC/API/Comandos.md",
     "Excalidraw/Drawing 2024-02-16 19.43.25.excalidraw.md",
     "UPC/ERF/Tema 1.md",
+    "UPC/ERF/lienatransmision.svg",
     "UPC/ERF",
     "TFG/SERVER",
     "TFG/DRON",
@@ -190,12 +183,9 @@
     "UPC/CSF/FQCSF.md",
     "UPC/CSF/Pasted image 20240114232313.png",
     "UPC/CSF/Pasted image 20240114231628.png",
-    "UPC/CSF/Pasted image 20240114231352.png",
-    "UPC/CSF/Pasted image 20240114175534.png",
     "Excalidraw/Drawing 2023-11-16 16.11.58.excalidraw.md",
     "UPC/CSF",
     "Excalidraw/Drawing 2023-10-25 16.48.25.excalidraw.md",
-    "Excalidraw/Scripts/Downloaded/Auto Draw for Pen.svg",
     "Excalidraw/Scripts/Downloaded/Auto Draw for Pen.md",
     "Excalidraw/Scripts/Downloaded",
     "Excalidraw/Scripts",
@@ -217,7 +207,6 @@
     "UPC/Electri/Practicas/P1/excalibrain.md",
     "Excalidraw/Drawing 2023-08-23 10.44.38.excalidraw.md",
     "UPC/CESA/Evolución_y_características_generales_SA.md",
-    "SET Research/Coulomb_blockade.md",
     "Untitled.canvas"
   ]
 }
