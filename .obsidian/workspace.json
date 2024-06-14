@@ -4,22 +4,43 @@
     "type": "split",
     "children": [
       {
-        "id": "cd8eeb0d7852b7f2",
+        "id": "d222463017150fb8",
         "type": "tabs",
         "children": [
           {
-            "id": "002b751fb1575aa6",
+            "id": "ac4790ffa3dbd5cd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "UPC/API/Comandos.md",
+                "file": "UPC/CSF/FQCSF.md",
                 "mode": "source",
                 "source": false
               }
             }
+          },
+          {
+            "id": "97e36073ab572293",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "UPC/CSF/sorted.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "167c5e043a7029bb",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -69,7 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 325.5
   },
   "right": {
     "id": "8322974853be94ff",
@@ -85,7 +106,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "UPC/API/Comandos.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +122,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "UPC/API/Comandos.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -124,9 +143,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "UPC/API/Comandos.md"
-              }
+              "state": {}
             }
           },
           {
@@ -160,14 +177,26 @@
       "obsidian-map-view:Open map view": false
     }
   },
-  "active": "002b751fb1575aa6",
+  "active": "167c5e043a7029bb",
   "lastOpenFiles": [
-    "UPC/API/Pasted image 20240228214522.png",
-    "UPC/API/Pasted image 20240228214541.png",
+    "UPC/CSF/sorted.md",
+    "UPC/CSF/FQCSF.md",
+    "UPC/CSF/Pasted image 20240614121313.png",
+    "UPC/CSF/Pasted image 20240614115916.png",
+    "UPC/CSF/Pasted image 20240614001842.png",
+    "UPC/CSF/tempCodeRunnerFile.py",
+    "UPC/CSF/Pasted image 20240614104604.png",
+    "UPC/CSF/Pasted image 20240614104523.png",
+    "UPC/CSF/Pasted image 20240612142848.png",
+    "UPC/CSF/Pasted image 20240612174303.png",
+    "UPC/CSF/Pasted image 20240612201400.png",
+    "UPC/CSF/Pasted image 20240612202420.png",
+    "UPC/CSF/Pasted image 20240613121928.png",
+    "UPC/CSF/test.py",
+    "UPC/CSF/sorter.py",
     "UPC/API/Comandos.md",
     "Excalidraw/Drawing 2024-02-16 19.43.25.excalidraw.md",
     "UPC/ERF/Tema 1.md",
-    "UPC/ERF/lienatransmision.svg",
     "UPC/ERF",
     "TFG/SERVER",
     "TFG/DRON",
@@ -175,24 +204,13 @@
     "TFG",
     "UPC/CESA/FQ.md",
     "UPC/API/PIM-SM.md",
-    "UPC/CSF/Pasted image 20240114233246.png",
-    "UPC/CSF/Pasted image 20240114233103.png",
-    "UPC/CSF/Pasted image 20240114232907.png",
-    "UPC/CSF/Pasted image 20240114232705.png",
-    "UPC/CSF/Pasted image 20240114175240.png",
-    "UPC/CSF/FQCSF.md",
-    "UPC/CSF/Pasted image 20240114232313.png",
-    "UPC/CSF/Pasted image 20240114231628.png",
     "Excalidraw/Drawing 2023-11-16 16.11.58.excalidraw.md",
     "UPC/CSF",
     "Excalidraw/Drawing 2023-10-25 16.48.25.excalidraw.md",
     "Excalidraw/Scripts/Downloaded/Auto Draw for Pen.md",
     "Excalidraw/Scripts/Downloaded",
-    "Excalidraw/Scripts",
     "UPC/CA1/Formulario CA1.md",
     "Excalidraw/Drawing 2023-10-25 16.47.32.excalidraw.md",
-    "Excalidraw",
-    "UPC/CA1",
     "UPC/API/Mutlicast.md",
     "MULTICAST.md",
     "UPC/API/IGMP.md",
@@ -206,7 +224,6 @@
     "UPC/CESA/Trifásica a monofásica.md",
     "UPC/Electri/Practicas/P1/excalibrain.md",
     "Excalidraw/Drawing 2023-08-23 10.44.38.excalidraw.md",
-    "UPC/CESA/Evolución_y_características_generales_SA.md",
     "Untitled.canvas"
   ]
 }
